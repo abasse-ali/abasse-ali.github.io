@@ -1,0 +1,236 @@
+/* style.css - FINAL */
+
+:root {
+    --neon-green: #00ff41;
+    --dark-bg: #0a0a0a;
+    --hex-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--dark-bg); }
+::-webkit-scrollbar-thumb { background: var(--neon-green); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #00cc33; }
+
+/* Utilitaires */
+.clip-path-hex { clip-path: var(--hex-path); }
+
+/* --- ANIMATIONS --- */
+
+@keyframes organic-float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes neon-pulse {
+    0% {
+        filter: drop-shadow(0 0 2px var(--neon-green)) drop-shadow(0 0 5px rgba(0, 255, 65, 0.4));
+        transform: scale(1);
+    }
+    50% {
+        filter: drop-shadow(0 0 8px var(--neon-green)) drop-shadow(0 0 15px rgba(0, 255, 65, 0.6));
+        transform: scale(1.02);
+    }
+    100% {
+        filter: drop-shadow(0 0 2px var(--neon-green)) drop-shadow(0 0 5px rgba(0, 255, 65, 0.4));
+        transform: scale(1);
+    }
+}
+
+/* Animation Pulsation Blanche pour l'hexagone central */
+@keyframes neon-pulse-white {
+    0% {
+        filter: drop-shadow(0 0 5px var(--neon-green)) drop-shadow(0 0 10px rgba(0, 255, 65, 0.4));
+        transform: scale(1);
+    }
+    50% {
+        filter: drop-shadow(0 0 10px #ffffff) drop-shadow(0 0 30px var(--neon-green)); 
+        transform: scale(1.03);
+    }
+    100% {
+        filter: drop-shadow(0 0 5px var(--neon-green)) drop-shadow(0 0 10px rgba(0, 255, 65, 0.4));
+        transform: scale(1);
+    }
+}
+
+@keyframes hex-pulse {
+    0%, 100% { filter: drop-shadow(0 0 2px var(--neon-green)) drop-shadow(0 0 5px rgba(0, 255, 65, 0.4)); transform: scale(1.02); }
+    50% { filter: drop-shadow(0 0 8px var(--neon-green)) drop-shadow(0 0 15px rgba(0, 255, 65, 0.6)); transform: scale(1.02); }
+}
+.animate-hex-pulse { animation: hex-pulse 3s ease-in-out infinite; }
+
+/* --- AJOUT : Animation de la ligne Initialize --- */
+@keyframes scroll-grow {
+    0% { height: 0; opacity: 0; }
+    50% { height: 48px; opacity: 1; }
+    100% { height: 0; opacity: 0; }
+}
+.scroll-line-anim {
+    animation: scroll-grow 2s ease-in-out infinite;
+}
+
+@keyframes orbit-cw { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes orbit-ccw { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+.orbit-cw { animation: orbit-cw 60s linear infinite; }
+.orbit-ccw { animation: orbit-ccw 80s linear infinite; }
+
+@keyframes dash-flow { to { stroke-dashoffset: -210; } }
+.data-packet { stroke-dasharray: 10 200; animation: dash-flow 3s linear infinite; }
+
+@keyframes loader-orbit {
+    0% { opacity: 0; transform: scale(0.5) translate(0, 0); }
+    50% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.5); }
+}
+
+/* --- CELLULES --- */
+.hex-wrapper {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    transition: z-index 0s;
+}
+/* Pas de hover sur l'accueil */
+#hero .hex-wrapper:hover { cursor: default; }
+#skills .hex-wrapper:hover { z-index: 50; cursor: pointer; }
+
+.hex-animator { width: 100%; height: 100%; }
+
+.effet-parallax {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hex-cell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glow-pulse { animation: neon-pulse 3s infinite ease-in-out; transform-origin: center center; }
+.glow-pulse-white { animation: neon-pulse-white 3s infinite ease-in-out; transform-origin: center center; }
+.glow-static { filter: drop-shadow(0 0 2px var(--neon-green)) drop-shadow(0 0 5px rgba(0, 255, 65, 0.4)); }
+
+.hex-border {
+    fill: rgba(0, 0, 0, 0.8);
+    stroke-width: 1.5px;
+    vector-effect: non-scaling-stroke;
+    transition: stroke 0.3s ease;
+}
+.hex-detail {
+    fill: none;
+    stroke-width: 0.5px;
+    stroke-opacity: 0.3;
+    transition: stroke 0.3s ease;
+}
+
+/* Hover uniquement pour Skills */
+#skills .hex-wrapper:hover .hex-cell { transform: scale(1.15); }
+#skills .hex-wrapper:hover .hex-border { stroke: #ffffff !important; fill: #000000; }
+#skills .hex-wrapper:hover .hex-detail { stroke: #ffffff !important; stroke-opacity: 0.9; }
+#skills .hex-wrapper:hover .skill-icon { color: #ffffff !important; transform: scale(1.1); }
+#skills .hex-wrapper:hover .skill-label { color: #ffffff !important; }
+#skills .hex-wrapper:hover .glow-static, 
+#skills .hex-wrapper:hover .glow-pulse { 
+    filter: drop-shadow(0 0 15px var(--neon-green)); 
+}
+
+/* --- UI --- */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+.draw-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 2s ease-out;
+}
+.draw-path.active { stroke-dashoffset: 0; }
+
+/* --- NAVIGATION ACTIVE --- */
+.nav-link { transition: color 0.3s ease; }
+.nav-link.active { color: var(--neon-green); text-shadow: 0 0 8px var(--neon-green); }
+.nav-link.active::after {
+    content: ''; 
+    position: absolute; 
+    bottom: -4px; 
+    left: 0; 
+    right: 0; 
+    height: 2px;
+    background-color: var(--neon-green); 
+    box-shadow: 0 0 8px var(--neon-green);
+    animation: glow-line 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow-line {
+    from { box-shadow: 0 0 2px var(--neon-green); opacity: 0.6; }
+    to { box-shadow: 0 0 8px var(--neon-green); opacity: 1; }
+}
+
+/* --- NAVIGATION DYNAMIQUE --- */
+
+/* État de base du lien */
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+/* État survolé (Hover) */
+.nav-link:hover {
+    opacity: 1;
+    color: var(--neon-green);
+    text-shadow: 0 0 5px var(--neon-green);
+}
+
+/* État ACTIF (Piloté par JS) */
+.nav-link.active {
+    opacity: 1;
+    color: var(--neon-green);
+    text-shadow: 0 0 8px var(--neon-green);
+}
+
+/* Barre de soulignement lumineuse pour l'état actif */
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--neon-green);
+    box-shadow: 0 0 8px var(--neon-green), 0 0 15px var(--neon-green);
+    animation: nav-line-expand 0.3s ease-out forwards;
+}
+
+@keyframes nav-line-expand {
+    from { width: 0; left: 50%; }
+    to { width: 100%; left: 0; }
+}
+
+/* Transition douce pour le conteneur de la navbar */
+#navbar > div {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#project-modal { transition: visibility 0s linear 0.3s, opacity 0.3s; }
+#project-modal.open { visibility: visible; opacity: 1; transition-delay: 0s; }
+#modal-content { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s; }

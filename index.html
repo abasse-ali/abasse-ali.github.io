@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/icone.png">
+    <title>Abasse ALI | Ingénieur Réseaux & Télécoms</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style/style.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 
+                        'neon-green': '#00ff41',
+                        'black-bg': '#0a0a0a',
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        sharetech: ['"Share Tech Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-black text-white selection:bg-neon-green selection:text-black font-sans overflow-x-hidden">
+
+    <div id="loading-screen" class="fixed inset-0 z-[100] bg-black flex items-center justify-center transition-opacity duration-1000">
+        <div class="relative w-[200px] h-[200px] flex items-center justify-center">
+            <div class="relative w-[120px] h-[120px] animate-hex-pulse z-10 flex items-center justify-center">
+                <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full filter drop-shadow-[0_0_8px_rgba(0,255,65,0.6)]">
+                    <path d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" fill="rgba(0,0,0,0.8)" stroke="#00ff41" stroke-width="1.5"></path>
+                </svg>
+                <div class="text-neon-green font-orbitron font-bold text-2xl tracking-tighter z-20">CR</div>
+            </div>
+            <div id="loader-orbits" class="absolute inset-0 pointer-events-none"></div>
+            <div class="absolute top-full mt-8 text-neon-green font-share-tech text-sm tracking-[0.3em] animate-pulse">
+                INITIALIZING...
+            </div>
+        </div>
+    </div>
+
+    <div id="particle-container" class="fixed inset-0 z-0 overflow-hidden pointer-events-none"></div>
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#00ff4111] to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#00ff4111] to-transparent"></div>
+    </div>
+
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 flex justify-center pt-6 pointer-events-none transition-transform duration-700 -translate-y-full">
+        <div class="bg-black/80 backdrop-blur-md border border-neon-green/30 rounded-full px-8 py-3 pointer-events-auto hidden md:flex gap-8 shadow-[0_0_15px_rgba(0,255,65,0.1)]">
+            <a href="#hero" class="nav-link text-neon-green relative text-sm font-orbitron tracking-wider hover:text-white transition-colors">ACCUEIL</a>
+            <a href="#about" class="nav-link text-gray-400 relative text-sm font-orbitron tracking-wider hover:text-white transition-colors">À PROPOS</a>
+            <a href="#skills" class="nav-link text-gray-400 relative text-sm font-orbitron tracking-wider hover:text-white transition-colors">COMPÉTENCES</a>
+            <a href="#projects" class="nav-link text-gray-400 relative text-sm font-orbitron tracking-wider hover:text-white transition-colors">PROJETS</a>
+            <a href="#contact" class="nav-link text-gray-400 relative text-sm font-orbitron tracking-wider hover:text-white transition-colors">CONTACT</a>
+        </div>
+    </nav>
+
+    <button id="mobile-menu-btn" class="fixed top-6 right-6 z-50 md:hidden w-12 h-12 bg-black border border-neon-green rounded-full flex items-center justify-center text-neon-green transition-transform duration-500 scale-0">
+        <i data-lucide="menu"></i>
+    </button>
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden translate-x-full transition-transform duration-300">
+        <a href="#hero" class="mobile-link text-2xl font-orbitron tracking-widest text-white hover:text-neon-green">ACCUEIL</a>
+        <a href="#about" class="mobile-link text-2xl font-orbitron tracking-widest text-white hover:text-neon-green">À PROPOS</a>
+        <a href="#skills" class="mobile-link text-2xl font-orbitron tracking-widest text-white hover:text-neon-green">COMPÉTENCES</a>
+        <a href="#projects" class="mobile-link text-2xl font-orbitron tracking-widest text-white hover:text-neon-green">PROJETS</a>
+        <a href="#contact" class="mobile-link text-2xl font-orbitron tracking-widest text-white hover:text-neon-green">CONTACT</a>
+    </div>
+
+    <main class="relative z-10 opacity-0 transition-opacity duration-1000" id="main-content">
+        
+        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
+            <div class="effet-parallax">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] pointer-events-none z-0 opacity-30">
+                    <svg class="w-full h-full orbit-cw"><circle cx="400" cy="400" r="180" fill="none" stroke="#00ff41" stroke-width="1" stroke-dasharray="4 4"></circle></svg>
+                </div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] pointer-events-none z-0 opacity-20">
+                    <svg class="w-full h-full orbit-ccw"><circle cx="400" cy="400" r="250" fill="none" stroke="#00ff41" stroke-width="0.5" stroke-dasharray="10 10"></circle></svg>
+                </div>
+
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="hex-wrapper" style="position: relative; transform: none; left: auto; top: auto;">
+                        <div class="hex-animator" style="animation: organic-float 6s ease-in-out infinite;">
+                            <div class="hex-cell glow-pulse" style="width: 320px; height: 320px; animation-delay: 0s;">
+                                <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible">
+                                    <path class="hex-border" d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" stroke="#00ff41" />
+                                    <path class="hex-detail" d="M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z" stroke="#00ff41" />
+                                </svg>
+                                <div class="relative z-10 text-center space-y-4 px-4">
+                                    <div class="relative">
+                                        <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tighter leading-tight" style="text-shadow: 0 0 25px rgba(0, 255, 65, 0.6);">
+                                            CELLULE<br>RÉSEAU
+                                        </h1>
+                                        <div class="absolute -inset-4 bg-[#00ff41] opacity-10 blur-xl rounded-full -z-10 animate-pulse"></div>
+                                    </div>
+                                    <div id="hero-line" class="w-0 h-1 bg-neon-green mx-auto rounded-full transition-all duration-1000 delay-500 shadow-[0_0_10px_#00ff41]"></div>
+                                    <div id="hero-identity" class="opacity-0 translate-y-4 transition-all duration-1000 delay-700">
+                                        <h2 class="text-lg md:text-xl font-bold text-white mb-1">Abasse ALI</h2>
+                                        <p class="text-neon-green text-xs md:text-sm font-mono tracking-widest uppercase opacity-90 drop-shadow-[0_0_5px_rgba(0,255,65,0.8)]">
+                                            Future Ingénieur Réseaux<br>& Télécommunications
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="absolute -top-12 -left-12 md:-top-24 md:-left-40 z-20">
+                        <div class="hex-wrapper" style="position: relative; transform: none; left: auto; top: auto;">
+                            <div class="hex-animator" style="animation: organic-float 5s ease-in-out infinite; animation-delay: -1.5s;">
+                                <div class="hex-cell glow-pulse" style="width: 100px; height: 100px; animation-delay: -1.5s;">
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible">
+                                        <path class="hex-border" d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" stroke="#00ff41" />
+                                        <path class="hex-detail" d="M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z" stroke="#00ff41" />
+                                    </svg>
+                                    <span class="relative z-10 text-[10px] text-neon-green opacity-90 font-mono font-bold">NET.CORE</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="absolute -bottom-8 -right-8 md:-bottom-16 md:-right-32 z-20">
+                        <div class="hex-wrapper" style="position: relative; transform: none; left: auto; top: auto;">
+                            <div class="hex-animator" style="animation: organic-float 7s ease-in-out infinite; animation-delay: -2.8s;">
+                                <div class="hex-cell glow-pulse" style="width: 120px; height: 120px; animation-delay: -2.8s;">
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible">
+                                        <path class="hex-border" d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" stroke="#00ff41" />
+                                        <path class="hex-detail" d="M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z" stroke="#00ff41" />
+                                    </svg>
+                                    <span class="relative z-10 text-[10px] text-neon-green opacity-90 font-mono font-bold">SYS.ACTIVE</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="absolute -top-32 right-0 md:-top-40 md:right-0 opacity-60 z-0">
+                        <div class="hex-wrapper" style="position: relative; transform: none; left: auto; top: auto;">
+                            <div class="hex-animator" style="animation: organic-float 4s ease-in-out infinite; animation-delay: -0.5s;">
+                                <div class="hex-cell glow-pulse" style="width: 60px; height: 60px; animation-delay: -0.5s;">
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible">
+                                        <path class="hex-border" d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" stroke="#00ff41" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-0 -left-20 md:bottom-10 md:-left-48 opacity-60 z-0">
+                        <div class="hex-wrapper" style="position: relative; transform: none; left: auto; top: auto;">
+                            <div class="hex-animator" style="animation: organic-float 6s ease-in-out infinite; animation-delay: -3.2s;">
+                                <div class="hex-cell glow-pulse" style="width: 70px; height: 70px; animation-delay: -3.2s;">
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible">
+                                        <path class="hex-border" d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" stroke="#00ff41" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="relative py-32 px-4 overflow-hidden">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                
+                <div class="relative h-[500px] flex items-center justify-center order-2 md:order-1">
+                    <div class="relative w-full h-full">
+                        <svg class="absolute inset-0 w-full h-full pointer-events-none z-0">
+                            <path class="draw-path" d="M 50% 50% L 50% 30% M 50% 50% L 30% 45% M 50% 50% L 70% 45% M 50% 50% L 42% 68% M 50% 50% L 58% 68%" stroke="#00ff41" stroke-width="1" stroke-opacity="0.3" fill="none"></path>
+                        </svg>
+
+                        <div class="hex-wrapper" style="top: 50%; left: 50%;">
+                            <div class="hex-animator" style="animation: organic-float 6s ease-in-out infinite;">
+                                <div class="hex-cell glow-pulse" style="width: 140px; height: 140px;">
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible">
+                                        <path class="hex-border" d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" stroke="#00ff41" />
+                                        <path class="hex-detail" d="M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z" stroke="#00ff41" />
+                                    </svg>
+                                    <i data-lucide="user" class="w-10 h-10 text-white relative z-10"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hex-wrapper" style="top: 30%; left: 50%;">
+                            <div class="hex-animator" style="animation: organic-float 5s ease-in-out infinite; animation-delay: -1s;">
+                                <div class="hex-cell glow-static" style="width: 90px; height: 90px;">
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible">
+                                        <path class="hex-border" d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" stroke="#00ff41" />
+                                        <path class="hex-detail" d="M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z" stroke="#00ff41" />
+                                    </svg>
+                                    <i data-lucide="target" class="w-6 h-6 text-neon-green relative z-10"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="hex-wrapper" style="top: 45%; left: 30%;">
+                            <div class="hex-animator" style="animation: organic-float 4s ease-in-out infinite; animation-delay: -0.5s;">
+                                <div class="hex-cell glow-static" style="width: 80px; height: 80px;">
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible">
+                                        <path class="hex-border" d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" stroke="#00ff41" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hex-wrapper" style="top: 45%; left: 70%;">
+                            <div class="hex-animator" style="animation: organic-float 4.5s ease-in-out infinite; animation-delay: -2s;">
+                                <div class="hex-cell glow-static" style="width: 80px; height: 80px;">
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible">
+                                        <path class="hex-border" d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" stroke="#00ff41" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hex-wrapper" style="top: 68%; left: 42%;">
+                            <div class="hex-animator" style="animation: organic-float 5.5s ease-in-out infinite; animation-delay: -1.5s;">
+                                <div class="hex-cell glow-static" style="width: 100px; height: 100px;">
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible">
+                                        <path class="hex-border" d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" stroke="#00ff41" />
+                                        <path class="hex-detail" d="M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z" stroke="#00ff41" />
+                                    </svg>
+                                    <span class="text-xs font-mono text-neon-green relative z-10 font-bold">EXP.GATHER</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hex-wrapper" style="top: 68%; left: 58%;">
+                            <div class="hex-animator" style="animation: organic-float 6.5s ease-in-out infinite; animation-delay: -3s;">
+                                <div class="hex-cell glow-static" style="width: 100px; height: 100px;">
+                                    <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible">
+                                        <path class="hex-border" d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" stroke="#00ff41" />
+                                        <path class="hex-detail" d="M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z" stroke="#00ff41" />
+                                    </svg>
+                                    <i data-lucide="zap" class="w-6 h-6 text-neon-green relative z-10"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-1 md:order-2 space-y-8 reveal-on-scroll">
+                    <div>
+                        <h2 class="text-3xl font-bold text-white tracking-widest mb-2 flex items-center gap-3">
+                            <span class="w-2 h-8 bg-neon-green rounded-sm"></span>
+                            L'ASSEMBLAGE
+                        </h2>
+                        <p class="text-neon-green font-mono text-sm tracking-wider opacity-80">À PROPOS</p>
+                    </div>
+                    <div class="prose prose-invert">
+                        <p class="text-gray-300 leading-relaxed text-lg">
+                            Comme les cellules qui s'assemblent pour former une structure complexe, je rassemble compétences et expériences pour devenir un ingénieur complet.
+                        </p>
+                        <p class="text-gray-400 leading-relaxed mt-4">
+                            Étudiant en <span class="text-neon-green">Réseaux & Télécommunications</span>, je me spécialise dans l'architecture réseau et la cybersécurité. Mon objectif est de construire des infrastructures robustes et évolutives, capables de s'adapter aux défis technologiques de demain.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="px-4 py-2 border border-neon-green border-opacity-30 rounded-sm bg-neon-green bg-opacity-5 text-neon-green font-mono text-xs tracking-wider">TARGET: Network Architect</div>
+                        <div class="px-4 py-2 border border-neon-green border-opacity-30 rounded-sm bg-neon-green bg-opacity-5 text-neon-green font-mono text-xs tracking-wider">TARGET: Cybersecurity</div>
+                        <div class="px-4 py-2 border border-neon-green border-opacity-30 rounded-sm bg-neon-green bg-opacity-5 text-neon-green font-mono text-xs tracking-wider">TARGET: DevOps</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="relative min-h-screen w-full py-20 px-4 overflow-hidden flex flex-col items-center">
+            <div class="text-center mb-12 relative z-20 reveal-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-orbitron font-bold text-white tracking-widest mb-2">RÉSEAU NEURONAL DES COMPÉTENCES</h2>
+                <div class="h-1 w-20 bg-neon-green mx-auto shadow-[0_0_10px_#00ff41]"></div>
+                <p class="mt-4 text-gray-400 font-share-tech text-sm">
+                    ÉTAT SYSTEME: <span class="text-neon-green animate-pulse">OPTIMISÉ</span>
+                </p>
+            </div>
+
+            <div id="skills-container" class="relative w-full max-w-6xl h-[600px] md:h-[800px]">
+                <svg id="connections-layer" class="absolute inset-0 w-full h-full pointer-events-none z-0 hidden md:block overflow-visible">
+                    <defs>
+                        <filter id="glow-line"><feGaussianBlur stdDeviation="2" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+                    </defs>
+                </svg>
+            </div>
+        </section>
+
+        <section id="projects" class="relative py-32 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-20 reveal-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-orbitron font-bold text-white tracking-widest mb-2">MES PROJETS</h2>
+                    <div class="h-1 w-20 bg-neon-green mx-auto shadow-[0_0_10px_#00ff41]"></div>
+                    <p class="mt-4 text-gray-400 font-share-tech text-sm">MES MODULES</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12" id="projects-grid"></div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-32 text-center relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at center, #00ff41 1px, transparent 1px); background-size: 40px 40px;"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#00ff4111] to-transparent pointer-events-none"></div>
+
+            <div class="relative z-10 max-w-2xl mx-auto px-4 reveal-on-scroll">
+                <h3 class="text-3xl md:text-4xl font-orbitron font-bold mb-2 text-white tracking-wider">CONTACT</h3>
+                <p class="text-gray-400 mb-10 font-share-tech text-sm">Prêt à collaborer sur de futures infrastructures</p>
+                
+                <div class="flex justify-center gap-6 mb-12">
+                    <a href="https://linkedin.com/in/abasse-ali" target="_blank" class="p-4 border border-neon-green border-opacity-30 rounded-full hover:bg-neon-green hover:text-black transition-all duration-300 group">
+                        <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    </a>
+                    <a href="https://github.com/abasse-ali" target="_blank" class="p-4 border border-neon-green border-opacity-30 rounded-full hover:bg-neon-green hover:text-black transition-all duration-300 group">
+                        <i data-lucide="github" class="w-6 h-6"></i>
+                    </a>
+                    <a href="mailto:contact@abasse.dev" class="p-4 border border-neon-green border-opacity-30 rounded-full hover:bg-neon-green hover:text-black transition-all duration-300 group">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                    </a>
+                </div>
+
+                <div class="text-xs text-gray-600 font-share-tech">
+                    <p>© 2025 CELLULE RÉSEAU. SYSTEM ONLINE.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none" id="scroll-indicator">
+            <span class="text-neon-green text-xs font-share-tech tracking-[0.2em] uppercase">Initialisation</span>
+            <div class="w-[1px] h-12 bg-gradient-to-b from-[#00ff41] to-transparent animate-[pulse_2s_infinite]"></div>
+        </div>
+    </main>
+
+    <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="modal-backdrop"></div>
+        <div class="relative w-full max-w-2xl bg-black-bg border border-neon-green p-1 transform scale-95 opacity-0" id="modal-content">
+            <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-neon-green"></div>
+            <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-neon-green"></div>
+            <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-neon-green"></div>
+            <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-neon-green"></div>
+
+            <div class="bg-black-bg p-6 md:p-8 max-h-[80vh] overflow-y-auto custom-scrollbar relative">
+                <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-neon-green transition-colors">
+                    <i data-lucide="x"></i>
+                </button>
+                <span id="modal-category" class="text-neon-green font-share-tech text-xs tracking-widest uppercase mb-2 block"></span>
+                <h2 id="modal-title" class="text-3xl font-orbitron font-bold text-white mb-6"></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2"><i data-lucide="server" class="w-4 h-4 text-neon-green"></i> DESCRIPTION</h3>
+                        <p id="modal-desc" class="text-gray-300 text-sm leading-relaxed"></p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2"><i data-lucide="layers" class="w-4 h-4 text-neon-green"></i> RÉSULTATS</h3>
+                        <p id="modal-results" class="text-gray-300 text-sm leading-relaxed"></p>
+                    </div>
+                </div>
+                <div class="mb-8">
+                    <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2"><i data-lucide="code" class="w-4 h-4 text-neon-green"></i> STACK TECHNIQUE</h3>
+                    <div id="modal-tech" class="flex flex-wrap gap-2"></div>
+                </div>
+                <div id="modal-links" class="flex gap-4 pt-4 border-t border-gray-800"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script/script.js"></script>
+</body>
+</html>
