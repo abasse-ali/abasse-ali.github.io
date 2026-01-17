@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             description: "Configuration complète d'équipements réseau (Routeurs, Switchs) pour une architecture d'entreprise sécurisée.",
             fullDescription: "Conception et déploiement d'une architecture réseau complète pour une PME simulée. Mise en place de VLANs pour segmenter le trafic, configuration du routage inter-VLAN, et sécurisation des accès via ACLs. Implémentation de protocoles de redondance.",
             results: 'Segmentation réseau efficace, latence réduite de 40%, sécurité renforcée.',
-            tech: ['Cisco Packet Tracer', 'VLAN', 'OSPF', 'ACL', 'NAT'],
+            tech: ['Packet Tracer', 'VLAN', 'OSPF', 'ACL', 'NAT'],
             icon: 'server',
             links: { demo: '#' }
         },
@@ -57,27 +57,30 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const skillsData = [
-        { id: 'cisco', label: 'CISCO CCNA', icon: 'network', x: 50, y: 40, size: 130, type: 'core', level: 'Expert', desc: 'Config routeurs/switchs, VLAN, OSPF' },
-        { id: 'huawei', label: 'HUAWEI', icon: 'server', x: 30, y: 50, size: 120, type: 'core', level: 'Avancé', desc: 'Équipements Huawei HCIA, Datacom' },
-        { id: 'python', label: 'PYTHON', icon: 'code', x: 70, y: 50, size: 120, type: 'core', level: 'Avancé', desc: 'Scripting réseau, automatisation' },
-        { id: 'linux', label: 'LINUX', icon: 'terminal', x: 50, y: 65, size: 120, type: 'core', level: 'Expert', desc: 'Admin sys, Bash, Services' },
+        { id: 'net_archi', label: 'Archi Réseaux', icon: 'network', x: 50, y: 40, size: 130, type: 'core', level: 'Inter.', desc: 'TCP/IP, LAN/WAN, Modèle OSI' },
+        { id: 'bash', label: 'BASH', icon: 'terminal', x: 30, y: 50, size: 120, type: 'core', level: 'Inter.', desc: 'CLI, Datacom' },
+        { id: 'python', label: 'PYTHON', icon: 'code', x: 70, y: 50, size: 120, type: 'core', level: 'Avancé', desc: 'Scripting réseau, automatisation, Structures de données' },
+        { id: 'linux', label: 'LINUX', icon: 'server', x: 50, y: 65, size: 120, type: 'core', level: 'Inter.', desc: 'Admin sys, Bash, Services' },
 
-        { id: 'routing', label: 'Routage', icon: 'wifi', x: 30, y: 30, size: 100, type: 'tech', level: 'Avancé', desc: 'OSPF, BGP, EIGRP' },
-        { id: 'wireshark', label: 'Wireshark', icon: 'shield', x: 70, y: 30, size: 100, type: 'tech', level: 'Avancé', desc: 'Analyse paquets, troubleshooting' },
+        { id: 'routing', label: 'Routage', icon: 'wifi', x: 30, y: 30, size: 100, type: 'tech', level: 'Inter.', desc: 'OSPF, BGP, EIGRP' },
+        { id: 'wireshark', label: 'Wireshark', icon: 'shield', x: 70, y: 30, size: 100, type: 'tech', level: 'Inter.', desc: 'Analyse paquets, troubleshooting' },
         { id: 'winserver', label: 'Win Server', icon: 'layers', x: 15, y: 60, size: 100, type: 'tech', level: 'Inter.', desc: 'AD, DNS, DHCP, GPO' },
         { id: 'html', label: 'HTML/CSS', icon: 'globe', x: 85, y: 60, size: 100, type: 'tech', level: 'Inter.', desc: 'Structure web, CSS moderne' },
-        { id: 'packet', label: 'Packet Tracer', icon: 'network', x: 50, y: 20, size: 100, type: 'tech', level: 'Expert', desc: 'Simulation architectures complexes' },
+        { id: 'packet', label: 'Packet Tracer', icon: 'network', x: 50, y: 20, size: 100, type: 'tech', level: 'Inter.', desc: 'Simulation architectures complexes' },
  
-        { id: 'team', label: 'Équipe', icon: 'users', x: 15, y: 40, size: 80, type: 'soft', level: 'Soft', desc: 'Collaboration agile' },
+        { id: 'com', label: 'Comm.', icon: 'message-circle', x: 30, y: 70, size: 80, type: 'soft', level: 'Soft', desc: 'SHS, Communication pro' },
+        { id: 'project', label: 'Projet / BE', icon: 'users', x: 70, y: 70, size: 80, type: 'soft', level: 'Pratique', desc: 'Travail déquipe, Bureau d\'études' },
+        { id: 'team', label: 'Équipe', icon: 'users', x: 50, y: 85, size: 80, type: 'soft', level: 'Soft', desc: 'Collaboration agile' },
         { id: 'org', label: 'Org.', icon: 'brain', x: 85, y: 40, size: 80, type: 'soft', level: 'Soft', desc: 'Gestion du temps' },
-        { id: 'serious', label: 'Sérieux', icon: 'clock', x: 50, y: 85, size: 80, type: 'soft', level: 'Soft', desc: 'Rigueur et fiabilité' }
+        { id: 'serious', label: 'Sérieux', icon: 'clock', x: 15, y: 40, size: 80, type: 'soft', level: 'Soft', desc: 'Rigueur et fiabilité' }
     ];
 
     const connections = [
-        ['cisco', 'huawei'], ['cisco', 'python'], ['cisco', 'linux'],
-        ['huawei', 'linux'], ['python', 'linux'], ['cisco', 'routing'],
-        ['cisco', 'wireshark'], ['huawei', 'winserver'], ['python', 'html'],
-        ['huawei', 'team'], ['python', 'org'], ['cisco', 'packet'], ['linux', 'serious']
+        ['net_archi', 'bash'], ['net_archi', 'python'], ['net_archi', 'linux'],
+        ['bash', 'linux'], ['python', 'linux'], ['net_archi', 'routing'],
+        ['net_archi', 'wireshark'], ['bash', 'winserver'], ['python', 'html'],
+        ['bash', 'serious'], ['python', 'org'], ['net_archi', 'packet'],
+        ['linux', 'team'], ['team', 'com'], ['team', 'project']
     ];
 
     function initLoader() {
