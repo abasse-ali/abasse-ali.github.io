@@ -222,7 +222,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         projects.forEach((project, index) => {
             const card = document.createElement('div');
-            card.className = 'relative group cursor-pointer reveal-on-scroll project-card-trigger';
+            
+            card.className = 'relative group cursor-pointer reveal-on-scroll project-card-trigger w-full max-w-[340px] md:max-w-none mx-auto';
+            
             card.style.transitionDelay = `${index * 0.2}s`;
             card.setAttribute('data-id', project.id);
             
@@ -232,28 +234,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
             card.innerHTML = `
                 <div class="absolute inset-0 bg-neon-green bg-opacity-5 clip-path-hex transform transition-transform duration-500 group-hover:scale-105 border border-neon-green/20"></div>
-                <div class="relative p-8 flex flex-col items-center text-center h-full min-h-[400px] justify-between z-10">
-                    <div class="mb-6 relative w-[80px] h-[80px]">
+                
+                <div class="relative p-6 md:p-8 flex flex-col items-center text-center h-full min-h-[320px] md:min-h-[400px] justify-between z-10">
+                    
+                    <div class="mb-4 md:mb-6 relative w-[60px] h-[60px] md:w-[80px] md:h-[80px]">
                         <div class="hex-animator absolute inset-0" style="animation: organic-float 4s ease-in-out infinite; animation-delay: -${floatDelay}s;">
-                            <div class="hex-cell glow-pulse" style="width: 80px; height: 80px;">
+                            <div class="hex-cell glow-pulse" style="width: 100%; height: 100%;">
                                 <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full overflow-visible">
                                     <path class="hex-border" d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" stroke="${COLORS.neon}" />
                                     <path class="hex-detail" d="M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z" stroke="${COLORS.neon}" />
                                 </svg>
-                                <div class="relative z-10 flex flex-col items-center justify-center p-2">
-                                    <i data-lucide="${project.icon}" class="w-8 h-8 text-neon-green transition-transform duration-300 group-hover:scale-110 group-hover:text-white"></i>
+                                <div class="relative z-10 flex flex-col items-center justify-center p-2 h-full">
+                                    <i data-lucide="${project.icon}" class="w-6 h-6 md:w-8 md:h-8 text-neon-green transition-transform duration-300 group-hover:scale-110 group-hover:text-white"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="flex-grow">
+                    
+                    <div class="flex-grow flex flex-col justify-center">
                         <span class="text-xs font-share-tech tracking-widest opacity-60 text-neon-green mb-2 block">${project.category}</span>
-                        <h3 class="text-xl font-orbitron font-bold text-white mb-4 group-hover:text-neon-green transition-colors">${project.title}</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3">${project.description}</p>
+                        <h3 class="text-lg md:text-xl font-orbitron font-bold text-white mb-3 group-hover:text-neon-green transition-colors">${project.title}</h3>
+                        <p class="text-gray-400 text-xs md:text-sm leading-relaxed mb-4 line-clamp-3">${project.description}</p>
                     </div>
-                    <div class="flex flex-wrap justify-center gap-2 mb-6">${techStack} ${extraTech}</div>
-                    <div class="flex items-center gap-2 text-sm font-bold text-white group-hover:text-neon-green transition-colors font-orbitron pointer-events-none">
-                        ACCESS DATA <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    
+                    <div class="flex flex-wrap justify-center gap-2 mb-4 md:mb-6">${techStack} ${extraTech}</div>
+                    
+                    <div class="flex items-center gap-2 text-xs md:text-sm font-bold text-white group-hover:text-neon-green transition-colors font-orbitron pointer-events-none">
+                        ACCESS DATA <i data-lucide="arrow-right" class="w-3 h-3 md:w-4 md:h-4"></i>
                     </div>
                 </div>
             `;
