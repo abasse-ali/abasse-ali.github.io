@@ -58,28 +58,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const skillsData = [
         { id: 'net_archi', label: 'Archi Réseaux', icon: 'network', x: 50, y: 40, size: 130, type: 'core', level: 'Inter.', desc: 'TCP/IP, LAN/WAN, Modèle OSI' },
-        { id: 'bash', label: 'BASH', icon: 'terminal', x: 30, y: 50, size: 120, type: 'core', level: 'Inter.', desc: 'CLI, Datacom' },
+        { id: 'telecom', label: 'Télécoms', icon: 'wifi', x: 30, y: 50, size: 120, type: 'core', level: 'Inter.', desc: 'Transmission, Hyperfréquences, Signal' },
         { id: 'python', label: 'PYTHON', icon: 'code', x: 70, y: 50, size: 120, type: 'core', level: 'Avancé', desc: 'Scripting réseau, automatisation, Structures de données' },
         { id: 'linux', label: 'LINUX', icon: 'server', x: 50, y: 65, size: 120, type: 'core', level: 'Inter.', desc: 'Admin sys, Bash, Services' },
 
-        { id: 'routing', label: 'Routage', icon: 'wifi', x: 30, y: 30, size: 100, type: 'tech', level: 'Inter.', desc: 'OSPF, BGP, EIGRP' },
+        { id: 'java', label: 'Java / Kotlin', icon: 'layers', x: 30, y: 30, size: 100, type: 'tech', level: 'Inter.', desc: 'Conception Objet, UML, Classes' },
         { id: 'wireshark', label: 'Wireshark', icon: 'shield', x: 70, y: 30, size: 100, type: 'tech', level: 'Inter.', desc: 'Analyse paquets, troubleshooting' },
         { id: 'winserver', label: 'Win Server', icon: 'layers', x: 15, y: 60, size: 100, type: 'tech', level: 'Inter.', desc: 'AD, DNS, DHCP, GPO' },
         { id: 'html', label: 'HTML/CSS', icon: 'globe', x: 85, y: 60, size: 100, type: 'tech', level: 'Inter.', desc: 'Structure web, CSS moderne' },
         { id: 'packet', label: 'Packet Tracer', icon: 'network', x: 50, y: 20, size: 100, type: 'tech', level: 'Inter.', desc: 'Simulation architectures complexes' },
  
-        { id: 'com', label: 'Comm.', icon: 'message-circle', x: 30, y: 70, size: 80, type: 'soft', level: 'Soft', desc: 'SHS, Communication pro' },
+        { id: 'com', label: 'Comm.', icon: 'message-circle', x: 30, y: 70, size: 80, type: 'soft', level: 'Soft Skill', desc: 'SHS, Communication pro' },
         { id: 'project', label: 'Projet / BE', icon: 'users', x: 70, y: 70, size: 80, type: 'soft', level: 'Pratique', desc: 'Travail déquipe, Bureau d\'études' },
-        { id: 'team', label: 'Équipe', icon: 'users', x: 50, y: 85, size: 80, type: 'soft', level: 'Soft', desc: 'Collaboration agile' },
-        { id: 'org', label: 'Org.', icon: 'brain', x: 85, y: 40, size: 80, type: 'soft', level: 'Soft', desc: 'Gestion du temps' },
-        { id: 'serious', label: 'Sérieux', icon: 'clock', x: 15, y: 40, size: 80, type: 'soft', level: 'Soft', desc: 'Rigueur et fiabilité' }
+        { id: 'team', label: 'Équipe', icon: 'users', x: 50, y: 85, size: 80, type: 'soft', level: 'Soft Skill', desc: 'Collaboration agile' },
+        { id: 'org', label: 'Org.', icon: 'brain', x: 85, y: 40, size: 80, type: 'soft', level: 'Soft Skill', desc: 'Gestion du temps' },
+        { id: 'serious', label: 'Sérieux', icon: 'clock', x: 15, y: 40, size: 80, type: 'soft', level: 'Soft Skill', desc: 'Rigueur et fiabilité' }
     ];
 
     const connections = [
-        ['net_archi', 'bash'], ['net_archi', 'python'], ['net_archi', 'linux'],
-        ['bash', 'linux'], ['python', 'linux'], ['net_archi', 'routing'],
-        ['net_archi', 'wireshark'], ['bash', 'winserver'], ['python', 'html'],
-        ['bash', 'serious'], ['python', 'org'], ['net_archi', 'packet'],
+        ['net_archi', 'telecom'], ['net_archi', 'python'], ['net_archi', 'linux'],
+        ['net_archi', 'java'],['telecom', 'linux'], ['python', 'linux'],
+        ['net_archi', 'wireshark'], ['telecom', 'winserver'], ['python', 'html'],
+        ['telecom', 'serious'], ['python', 'org'], ['net_archi', 'packet'],
         ['linux', 'team'], ['team', 'com'], ['team', 'project']
     ];
 
