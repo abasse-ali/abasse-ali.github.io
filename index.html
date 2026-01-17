@@ -32,28 +32,13 @@
 </head>
 <body class="bg-black text-white selection:bg-neon-green selection:text-black font-sans overflow-x-hidden">
 
-    <div id="loading-screen" class="fixed inset-0 z-[100] bg-black flex items-center justify-center transition-opacity duration-1000">
-        <div class="relative w-[200px] h-[200px] flex items-center justify-center">
-            <div class="relative w-[120px] h-[120px] animate-hex-pulse z-10 flex items-center justify-center">
-                <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full filter drop-shadow-[0_0_8px_rgba(0,255,65,0.6)]">
-                    <path d="M50 0 L93.3 25 L93.3 75 L50 100 L6.7 75 L6.7 25 Z" fill="rgba(0,0,0,0.8)" stroke="#00ff41" stroke-width="1.5"></path>
-                </svg>
-                <div class="text-neon-green font-orbitron font-bold text-2xl tracking-tighter z-20">CR</div>
-            </div>
-            <div id="loader-orbits" class="absolute inset-0 pointer-events-none"></div>
-            <div class="absolute top-full mt-8 text-neon-green font-share-tech text-sm tracking-[0.3em] animate-pulse">
-                INITIALIZING...
-            </div>
-        </div>
-    </div>
-
     <div id="particle-container" class="fixed inset-0 z-0 overflow-hidden pointer-events-none"></div>
     <div class="fixed inset-0 pointer-events-none z-0">
         <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#00ff4111] to-transparent"></div>
         <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#00ff4111] to-transparent"></div>
     </div>
 
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 flex justify-center pt-6 pointer-events-none transition-transform duration-700 -translate-y-full">
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 flex justify-center pt-6 pointer-events-none transition-transform duration-700 -translate-y-0">
         <div class="bg-black/80 backdrop-blur-md border border-neon-green/30 rounded-full px-8 py-3 pointer-events-auto hidden md:flex gap-8 shadow-[0_0_15px_rgba(0,255,65,0.1)]">
             <a href="#hero" class="nav-link text-neon-green relative text-sm font-orbitron tracking-wider hover:text-white transition-colors">ACCUEIL</a>
             <a href="#about" class="nav-link text-gray-400 relative text-sm font-orbitron tracking-wider hover:text-white transition-colors">À PROPOS</a>
@@ -74,7 +59,7 @@
         <a href="#contact" class="mobile-link text-2xl font-orbitron tracking-widest text-white hover:text-neon-green">CONTACT</a>
     </div>
 
-    <main class="relative z-10 opacity-0 transition-opacity duration-1000" id="main-content">
+    <main class="relative z-10 opacity-100 transition-opacity duration-1000" id="main-content">
         
         <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
             <div class="effet-parallax">
@@ -100,8 +85,8 @@
                                         </h1>
                                         <div class="absolute -inset-4 bg-[#00ff41] opacity-10 blur-xl rounded-full -z-10 animate-pulse"></div>
                                     </div>
-                                    <div id="hero-line" class="w-0 h-1 bg-neon-green mx-auto rounded-full transition-all duration-1000 delay-500 shadow-[0_0_10px_#00ff41]"></div>
-                                    <div id="hero-identity" class="opacity-0 translate-y-4 transition-all duration-1000 delay-700">
+                                    <div id="hero-line" class="w-16 h-1 bg-neon-green mx-auto rounded-full transition-all duration-1000 delay-500 shadow-[0_0_10px_#00ff41]"></div>
+                                    <div id="hero-identity" class="transition-all duration-1000 delay-700">
                                         <h2 class="text-lg md:text-xl font-bold text-white mb-1">Abasse ALI</h2>
                                         <p class="text-neon-green text-xs md:text-sm font-mono tracking-widest uppercase opacity-90 drop-shadow-[0_0_5px_rgba(0,255,65,0.8)]">
                                             Future Ingénieur Réseaux<br>& Télécommunications
@@ -301,7 +286,7 @@
         </section>
 
         <section id="contact" class="py-32 text-center relative overflow-hidden">
-            <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at center, #00ff41 1px, transparent 1px); background-size: 40px 40px;"></div>
+            <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at center, #00ff41 1px, transparent 1px); background-size: 50px 50px;"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-[#00ff4111] to-transparent pointer-events-none"></div>
 
             <div class="relative z-10 max-w-2xl mx-auto px-4 reveal-on-scroll">

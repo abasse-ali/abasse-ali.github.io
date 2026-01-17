@@ -81,48 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     function initLoader() {
-        const loadingScreen = document.getElementById('loading-screen');
-        const mainContent = document.getElementById('main-content');
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+        initScrollObserver();
+        
         const navbar = document.getElementById('navbar');
         const heroLine = document.getElementById('hero-line');
-        const heroIdentity = document.getElementById('hero-identity');
-        const loaderOrbits = document.getElementById('loader-orbits');
-
-        if (loaderOrbits) {
-            [0, 60, 120, 180, 240, 300].forEach((angle, i) => {
-                const dot = document.createElement('div');
-                dot.className = 'absolute bg-neon-green w-4 h-4 clip-path-hex';
-                const rad = angle * (Math.PI / 180);
-                const x = Math.cos(rad) * 80;
-                const y = Math.sin(rad) * 80;
-                dot.style.left = `calc(50% + ${x}px)`;
-                dot.style.top = `calc(50% + ${y}px)`;
-                dot.style.marginLeft = '-8px';
-                dot.style.marginTop = '-8px';
-                dot.style.animation = `loader-orbit 2s ease-in-out infinite`;
-                dot.style.animationDelay = `${i * 0.1}s`;
-                loaderOrbits.appendChild(dot);
-            });
-        }
-
-        setTimeout(() => {
-            if (loadingScreen) loadingScreen.style.opacity = '0';
-            setTimeout(() => {
-                if (loadingScreen) loadingScreen.style.display = 'none';
-                if (mainContent) mainContent.style.opacity = '1';
-                
-                if (navbar) {
-                    navbar.classList.remove('-translate-y-full');
-                    navbar.style.transform = 'translateY(0)';
-                }
-
-                if (heroLine) heroLine.style.width = '64px';
-                if (heroIdentity) heroIdentity.classList.remove('opacity-0', 'translate-y-4');
-                
-                if (typeof lucide !== 'undefined') lucide.createIcons();
-                initScrollObserver();
-            }, 800);
-        }, 3500);
+        
+        if (navbar) navbar.style.transform = 'translateY(0)';
+        if (heroLine) heroLine.style.width = '64px';
     }
 
     function initParticles() {
@@ -438,9 +404,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.dispatchEvent(new Event('scroll'));
     }
 
-    initLoader();
     initParticles();
     initSkillsMap();
     initProjects();
     initNavigation();
+    initLoader();
 });
